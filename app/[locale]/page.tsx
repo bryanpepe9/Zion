@@ -1,0 +1,183 @@
+import { notFound } from "next/navigation";
+import Link from "next/link";
+import Hero from "@/components/Hero";
+import Reveal from "@/components/Reveal";
+import PillButton from "@/components/PillButton";
+import NewsCard from "@/components/NewsCard";
+import { isLocale, nav, t, ui, localizedHref, type Locale } from "@/lib/i18n";
+import { home, site, newsPosts } from "@/content/site";
+
+const exploreKeys = ["/quem-somos", "/ministerios", "/missoes", "/eventos"];
+
+export default async function HomePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  if (!isLocale(locale)) notFound();
+  const l = locale as Locale;
+
+  const explore = exploreKeys
+    .map((href) => nav.find((n) => n.href === href))
+    .filter(Boolean) as typeof nav;
+
+  return (
+    <>
+      <Hero
+        title={t(home.heroTitle, l)}
+        kicker={t(home.heroKicker, l)}
+        subtitle={t(home.heroSubtitle, l)}
+        image="/images/eventos/hero.png"
+        imageAlt=""
+        size="full"
+        align="center"
+        priority
+      >
+        <PillButton href="#visit" variant="solid">
+          {t(home.ctaVisit, l)}
+        </PillButton>
+        <PillButton href={site.social.youtube} external>
+          {t(home.ctaWatch, l)}
+        </PillButton>
+      </Hero>
+
+      {/* Welcome / vision */}
+      <section className="bg-zion-radial">
+        <div className="container-zion grid gap-10 py-24 md:grid-cols-[0.7fr_1fr] md:gap-16 md:py-32">
+          <Reveal>
+            <p className="mb-4 text-xs uppercase tracking-[0.3em] text-teal">
+              {t(home.welcomeTitle, l)}
+            </p>
+            <h2 className="font-display text-3xl leading-snug text-cream md:text-5xl">
+              {t(site.vision, l)}
+            </h2>
+          </Reveal>
+          <Reveal delay={120} className="flex items-end">
+            <p className="text-base leading-relaxed text-cream/75 md:text-lg">
+              {t(home.welcomeBody, l)}
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Service times + location */}
+      <section id="visit" className="border-y border-line bg-zion-panel">
+        <div className="container-zion grid gap-10 py-20 md:grid-cols-2 md:py-28">
+          <Reveal>
+            <h3 className="font-display text-sm uppercase tracking-[0.3em] text-teal">
+              {t(home.servicesTitle, l)}
+            </h3>
+            <p className="mt-3 text-cream/60">{t(home.servicesNote, l)}</p>
+            <ul className="mt-8 divide-y divide-line">
+              {home.services.map((s, idx) => (
+                <li
+                  key={idx}
+                  className="flex items-baseline justify-between py-5"
+                >
+                  <span className="font-display text-2xl text-cream md:text-3xl">
+                    {t(s.day, l)}
+                  </span>
+                  <span className="text-lg tracking-wide text-cream/70">
+                    {s.time}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+          <Reveal delay={120} className="flex flex-col justify-center gap-5">
+            <h3 className="font-display text-sm uppercase tracking-[0.3em] text-teal">
+              {t(home.locationTitle, l)}
+            </h3>
+            <p className="font-display text-2xl text-cream md:text-3xl">
+              {t(site.address, l)}
+            </p>
+            <PillButton
+              href={`https://maps.google.com/?q=${encodeURIComponent(
+                site.mapsQuery
+              )}`}
+              external
+              className="w-fit"
+            >
+              {t(home.directions, l)}
+            </PillButton>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Explore */}
+      <section className="bg-zion-radial">
+        <div className="container-zion py-24 md:py-32">
+          <Reveal className="mb-12">
+            <h2 className="font-display text-4xl text-cream md:text-5xl">
+              {t(home.exploreTitle, l)}
+            </h2>
+          </Reveal>
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {explore.map((item, i) => (
+              <Reveal key={item.href} delay={(i % 4) * 80}>
+                <Link
+                  href={localizedHref(item.href, l)}
+                  className="group relative flex aspect-[4/5] flex-col justify-between overflow-hidden rounded-2xl bg-zion-panel p-7 ring-1 ring-line transition-all duration-500 ease-[var(--ease-soft)] hover:-translate-y-1 hover:ring-teal/50"
+                >
+                  <span className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-[radial-gradient(circle_at_50%_50%,rgba(20,184,166,0.4),transparent_65%)] transition-transform duration-700 group-hover:scale-125" />
+                  <span className="relative font-display text-5xl text-cream/15">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="relative">
+                    <span className="font-display text-2xl text-cream">
+                      {t(item.label, l)}
+                    </span>
+                    <span className="mt-2 block text-teal transition-transform duration-300 group-hover:translate-x-1">
+                      →
+                    </span>
+                  </span>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Latest news */}
+      <section className="border-t border-line">
+        <div className="container-zion py-24 md:py-32">
+          <Reveal className="mb-12 flex items-end justify-between gap-6">
+            <h2 className="font-display text-4xl text-cream md:text-5xl">
+              {t(home.newsTitle, l)}
+            </h2>
+            <Link
+              href={localizedHref("/news", l)}
+              className="shrink-0 text-sm tracking-wide text-teal hover:text-emerald"
+            >
+              {t(home.newsAll, l)} →
+            </Link>
+          </Reveal>
+          <div className="grid gap-6 md:grid-cols-3">
+            {newsPosts.slice(0, 3).map((post, i) => (
+              <Reveal key={post.slug} delay={(i % 3) * 80}>
+                <NewsCard post={post} locale={l} />
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Giving CTA */}
+      <section className="relative overflow-hidden border-t border-line bg-zion-panel">
+        <div className="pointer-events-none absolute -right-32 top-[-30%] h-[40rem] w-[40rem] rounded-full bg-[radial-gradient(circle_at_50%_50%,rgba(20,184,166,0.35),transparent_60%)]" />
+        <div className="container-zion relative flex flex-col items-start gap-7 py-24 md:py-32">
+          <h2 className="max-w-2xl font-display text-4xl leading-tight text-cream md:text-6xl">
+            {t(home.giveTitle, l)}
+          </h2>
+          <p className="max-w-xl text-base leading-relaxed text-cream/75 md:text-lg">
+            {t(home.giveBody, l)}
+          </p>
+          <PillButton href="#give" variant="solid">
+            {t(ui.give, l)}
+          </PillButton>
+        </div>
+      </section>
+    </>
+  );
+}
