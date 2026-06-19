@@ -38,6 +38,11 @@ export default function MinistryCard({
           <p className="text-sm leading-relaxed text-cream/70">
             {t(ministry.desc, locale)}
           </p>
+          {ministry.meets && (
+            <p className="mt-1 text-xs leading-relaxed text-teal/90">
+              {t(ministry.meets, locale)}
+            </p>
+          )}
         </div>
       </div>
     </article>

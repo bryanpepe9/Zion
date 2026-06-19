@@ -1,11 +1,14 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import Hero from "@/components/Hero";
 import Reveal from "@/components/Reveal";
 import PillButton from "@/components/PillButton";
 import NewsCard from "@/components/NewsCard";
+import WorldMap from "@/components/WorldMap";
 import { isLocale, nav, t, ui, localizedHref, type Locale } from "@/lib/i18n";
 import { home, site, newsPosts } from "@/content/site";
+import { networkSection } from "@/content/locations";
 
 const exploreKeys = ["/quem-somos", "/ministerios", "/missoes", "/eventos"];
 
@@ -26,6 +29,12 @@ export default async function HomePage({
     <>
       <Hero
         title={t(home.heroTitle, l)}
+        titleNode={
+          <>
+            Zion <span className="text-teal">Miami</span>
+          </>
+        }
+        titleWeight={500}
         kicker={t(home.heroKicker, l)}
         subtitle={t(home.heroSubtitle, l)}
         image="/images/eventos/hero.png"
@@ -44,17 +53,17 @@ export default async function HomePage({
 
       {/* Welcome / vision */}
       <section className="bg-zion-radial">
-        <div className="container-zion grid gap-10 py-24 md:grid-cols-[0.7fr_1fr] md:gap-16 md:py-32">
+        <div className="container-zion grid gap-10 py-24 lg:grid-cols-[0.85fr_1fr] lg:gap-16 lg:py-32">
           <Reveal>
             <p className="mb-4 text-xs uppercase tracking-[0.3em] text-teal">
               {t(home.welcomeTitle, l)}
             </p>
-            <h2 className="font-display text-3xl leading-snug text-cream md:text-5xl">
+            <h2 className="max-w-2xl font-display text-3xl leading-snug text-cream sm:text-4xl lg:text-5xl">
               {t(site.vision, l)}
             </h2>
           </Reveal>
           <Reveal delay={120} className="flex items-end">
-            <p className="text-base leading-relaxed text-cream/75 md:text-lg">
+            <p className="max-w-2xl text-base leading-relaxed text-cream/75 md:text-lg">
               {t(home.welcomeBody, l)}
             </p>
           </Reveal>
@@ -139,6 +148,56 @@ export default async function HomePage({
         </div>
       </section>
 
+      {/* Global network */}
+      <section className="overflow-hidden border-t border-line bg-zion-radial py-24 md:py-32">
+        <div className="container-zion">
+          <Reveal className="max-w-2xl">
+            <p className="mb-4 text-sm uppercase tracking-[0.35em] text-teal">
+              {t(networkSection.kicker, l)}
+            </p>
+            <h2 className="font-display text-4xl text-cream md:text-6xl">
+              {t(networkSection.title, l)}
+            </h2>
+            <p className="mt-5 text-base leading-relaxed text-cream/70 md:text-lg">
+              {t(networkSection.lede, l)}
+            </p>
+          </Reveal>
+        </div>
+        <Reveal delay={120} className="mt-12 md:mt-16">
+          <WorldMap locale={l} />
+        </Reveal>
+      </section>
+
+      {/* Bible reading plan */}
+      <section className="relative overflow-hidden border-t border-line bg-zion-radial">
+        <div className="container-zion grid items-center gap-12 py-24 md:grid-cols-2 md:gap-16 md:py-32">
+          <Reveal>
+            <h2 className="font-display text-4xl leading-tight text-cream md:text-6xl">
+              {t(home.readingPlanTitle, l)}
+            </h2>
+            <p className="mt-6 max-w-md text-base leading-relaxed text-cream/75 md:text-lg">
+              {t(home.readingPlanBody, l)}
+            </p>
+            <div className="mt-10">
+              <PillButton href={home.readingPlanHref}>
+                {t(home.readingPlanCta, l)}
+              </PillButton>
+            </div>
+          </Reveal>
+          <Reveal delay={120} className="relative">
+            <div className="relative mx-auto flex aspect-[4/5] w-full max-w-md items-center justify-center overflow-hidden rounded-3xl bg-[radial-gradient(120%_120%_at_70%_20%,rgba(20,184,166,0.28),transparent_60%)]">
+              <Image
+                src="/images/home/reading-plan.png"
+                alt={t(home.readingPlanTitle, l)}
+                fill
+                sizes="(max-width: 768px) 100vw, 40vw"
+                className="object-contain p-3"
+              />
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* Latest news */}
       <section className="border-t border-line">
         <div className="container-zion py-24 md:py-32">
@@ -173,7 +232,7 @@ export default async function HomePage({
           <p className="max-w-xl text-base leading-relaxed text-cream/75 md:text-lg">
             {t(home.giveBody, l)}
           </p>
-          <PillButton href="#give" variant="solid">
+          <PillButton href={localizedHref("/ofertas", l)} variant="solid">
             {t(ui.give, l)}
           </PillButton>
         </div>

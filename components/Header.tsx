@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { nav, t, ui, localizedHref, type Locale } from "@/lib/i18n";
@@ -44,9 +45,17 @@ export default function Header({ locale }: { locale: Locale }) {
       <div className="container-zion flex h-20 items-center justify-between">
         <Link
           href={localizedHref("/", locale)}
-          className="font-display text-xl tracking-[0.18em] text-cream"
+          aria-label="Zion Miami"
+          className="flex items-center"
         >
-          ZION <span className="text-teal">MIAMI</span>
+          <Image
+            src="/images/home/zion-logo.png"
+            alt="Zion Miami"
+            width={60}
+            height={64}
+            priority
+            className="h-12 w-auto md:h-14"
+          />
         </Link>
 
         {/* Desktop nav */}
@@ -68,12 +77,12 @@ export default function Header({ locale }: { locale: Locale }) {
 
         <div className="hidden items-center gap-5 lg:flex">
           <LangToggle locale={locale} />
-          <a
-            href="#give"
+          <Link
+            href={localizedHref("/ofertas", locale)}
             className="rounded-full border border-teal/60 bg-teal/10 px-5 py-2 text-sm tracking-wide text-cream transition-colors hover:bg-teal hover:text-ink"
           >
             {t(ui.give, locale)}
-          </a>
+          </Link>
         </div>
 
         {/* Mobile toggle */}
@@ -128,12 +137,13 @@ export default function Header({ locale }: { locale: Locale }) {
           ))}
           <div className="mt-6 flex items-center gap-6">
             <LangToggle locale={locale} />
-            <a
-              href="#give"
+            <Link
+              href={localizedHref("/ofertas", locale)}
+              onClick={() => setOpen(false)}
               className="rounded-full border border-teal/60 bg-teal/10 px-6 py-2 text-sm tracking-wide text-cream"
             >
               {t(ui.give, locale)}
-            </a>
+            </Link>
           </div>
         </nav>
       </div>

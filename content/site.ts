@@ -61,6 +61,23 @@ export const home = {
   locationTitle: { en: "Where we are", pt: "Onde estamos", es: "Dónde estamos" } as L,
   directions: { en: "Get directions", pt: "Ver no mapa", es: "Ver en el mapa" } as L,
 
+  readingPlanTitle: {
+    en: "Bible Reading Plan",
+    pt: "Plano de Leitura Bíblica",
+    es: "Plan de Lectura Bíblica",
+  } as L,
+  readingPlanBody: {
+    pt: "Nós da Família Zion sabemos da importância da Palavra de Deus e em 2026 estamos juntos no propósito de ler a Bíblia durante o ano todo.",
+    en: "We at the Zion Family know the importance of the Word of God, and in 2026 we are united in the purpose of reading the Bible all year long.",
+    es: "En la Familia Zion conocemos la importancia de la Palabra de Dios, y en 2026 estamos juntos en el propósito de leer la Biblia durante todo el año.",
+  } as L,
+  readingPlanCta: {
+    en: "Access the reading plan",
+    pt: "Acesse o plano de leitura",
+    es: "Accede al plan de lectura",
+  } as L,
+  readingPlanHref: "#", // TODO confirm — link to the 2026 reading plan
+
   exploreTitle: { en: "Explore Zion", pt: "Explore a Zion", es: "Explora Zion" } as L,
   newsTitle: { en: "Latest news", pt: "Últimas notícias", es: "Últimas noticias" } as L,
   newsAll: { en: "View all", pt: "Ver todas", es: "Ver todas" } as L,
@@ -121,53 +138,19 @@ export const pages = {
       es: "Novedades, avisos y lo que Dios está haciendo en Zion Miami.",
     } as L,
   },
+  ofertas: {
+    title: {
+      en: "Tithes & Offerings",
+      pt: "Dízimos e Ofertas",
+      es: "Diezmos y Ofrendas",
+    } as L,
+    intro: {
+      en: "Giving is worship — a joyful response to God's goodness.",
+      pt: "Contribuir é adoração — uma resposta alegre à bondade de Deus.",
+      es: "Ofrendar es adoración — una respuesta alegre a la bondad de Dios.",
+    } as L,
+  },
 };
 
-export interface NewsPost {
-  slug: string;
-  date: string; // ISO
-  title: L;
-  excerpt: L;
-}
-
-// Placeholder posts — replace with real content.  // TODO confirm
-export const newsPosts: NewsPost[] = [
-  {
-    slug: "novos-horarios",
-    date: "2026-06-01",
-    title: {
-      en: "New service times",
-      pt: "Novos horários de culto",
-      es: "Nuevos horarios de culto",
-    },
-    excerpt: {
-      pt: "Atualizamos a nossa programação semanal. Confira os novos horários e venha adorar conosco.",
-      en: "We've updated our weekly schedule. Check out the new times and come worship with us.",
-      es: "Actualizamos nuestra programación semanal. Consulta los nuevos horarios y ven a adorar con nosotros.",
-    },
-  },
-  {
-    slug: "plano-de-leitura-2026",
-    date: "2026-05-15",
-    title: { en: "2026 reading plan", pt: "Plano de leitura 2026", es: "Plan de lectura 2026" },
-    excerpt: {
-      pt: "Caminhe pela Palavra conosco ao longo do ano com o nosso plano de leitura bíblica.",
-      en: "Walk through the Word with us throughout the year with our Bible reading plan.",
-      es: "Camina por la Palabra con nosotros a lo largo del año con nuestro plan de lectura bíblica.",
-    },
-  },
-  {
-    slug: "celulas-abertas",
-    date: "2026-05-02",
-    title: {
-      en: "Small groups open in Miami",
-      pt: "Células abertas em Miami",
-      es: "Células abiertas en Miami",
-    },
-    excerpt: {
-      pt: "Conecte-se a uma família de fé perto de você. Nossas células estão abrindo em toda a cidade.",
-      en: "Connect with a family of faith near you. Our small groups are opening across the city.",
-      es: "Conéctate con una familia de fe cerca de ti. Nuestras células están abriendo en toda la ciudad.",
-    },
-  },
-];
+// News posts now live in `content/news.ts` (easy to edit — see the template there).
+export { newsPosts, type NewsPost } from "./news";

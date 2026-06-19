@@ -3,6 +3,10 @@ import type { ReactNode } from "react";
 
 interface HeroProps {
   title: string;
+  /** Optional rich title (e.g. with a colored accent word). Falls back to `title`. */
+  titleNode?: ReactNode;
+  /** Override the (light) display weight for the title. */
+  titleWeight?: number;
   kicker?: string;
   subtitle?: string;
   image?: string;
@@ -16,6 +20,8 @@ interface HeroProps {
 
 export default function Hero({
   title,
+  titleNode,
+  titleWeight,
   kicker,
   subtitle,
   image,
@@ -70,8 +76,11 @@ export default function Hero({
               {kicker}
             </p>
           )}
-          <h1 className="font-display text-5xl leading-[1.05] text-cream sm:text-6xl md:text-7xl">
-            {title}
+          <h1
+            className="font-display text-5xl leading-[1.05] text-cream sm:text-6xl md:text-7xl"
+            style={titleWeight ? { fontWeight: titleWeight } : undefined}
+          >
+            {titleNode ?? title}
           </h1>
           {subtitle && (
             <p className="mt-6 text-lg leading-relaxed text-cream/80 md:text-xl">

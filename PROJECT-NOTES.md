@@ -12,7 +12,8 @@ npm run lint     # eslint
 
 ## Structure
 
-- `app/[locale]/…` — six pages: `/` (Home), `/quem-somos`, `/ministerios`, `/missoes`, `/eventos`, `/news`. `locale` = `en` | `pt` | `es` (default `en`); `app/page.tsx` redirects `/` → `/en`.
+- `app/[locale]/…` — seven pages: `/` (Home), `/quem-somos`, `/ministerios`, `/missoes`, `/eventos`, `/news`, `/ofertas` (Tithes & Offerings). `locale` = `en` | `pt` | `es` (default `en`); `app/page.tsx` redirects `/` → `/en`.
+- The header **Give** pill (desktop + mobile) links to `/ofertas` — that's the offerings entry point (not in the 6-item text nav, to keep the header uncluttered; mirrors São Paulo's giving page).
 - `lib/i18n.ts` — locales, nav, shared UI strings, `Localized` type (`Partial<Record<Locale,string>>`), and `t()` (falls back to English) + `localizedHref()` helpers.
 - `content/` — all copy as `{ en, pt, es }` data: `ministries.ts` (11), `missionaries.ts` (16), `values.ts` (7), `events.ts`, `site.ts` (page copy + Home/News + footer).
 - `components/` — `Header` (sticky + full-screen mobile menu), `Footer`, `LangToggle`, `Hero` (curve motif), `PillButton`, `MinistryCard`, `MissionaryCard`, `EventCard`, `NewsCard`, `ValuesCarousel`, `Reveal` (scroll-in), `SectionHeading`.
@@ -37,10 +38,12 @@ The source `Site/` design PNGs had **baked-in Portuguese text**. For a bilingual
 
 ## TODO — still to confirm with the church
 
+- **Offerings (`/ofertas`):** structure mirrors São Paulo's "Dízimos e Ofertas" (teaching + Proverbs 3:9-10 + ways to give + how-to video). **Giving methods are PLACEHOLDERS** in `content/offerings.ts` — replace Online link, Zelle/PayPal addresses with Miami's real ones (PIX / Brazilian bank details intentionally omitted — they're São Paulo's). Optional hero photo: add `image="/uploads/ofertas-hero.jpg"` in `app/[locale]/ofertas/page.tsx`. The embedded video is the São Paulo how-to-give clip (`51Tcy2rCCtE`) — swap for a Miami one if desired.
+- **Ministries:** all 11 from the Brazilian set are kept as placeholders. Miami's IG shows its own youth structure — **Rise 12–17** (Fri Hangout 5 PM, Threefold Cafe) and **Vox 19–29** (Fri Hangout 7:30 PM, Azusa) are set from real data; this means **Flow (15–17) overlaps Rise** and may not be a separate Miami ministry. Confirm the actual Miami ministry list + each group's meeting day/time/location (`content/ministries.ts` → `meets`).
 - **Logo file:** using the IG mark; if they have a high-res / transparent logo for the header wordmark, swap it in.
 - **Contact:** email is a placeholder (`info@zionmiami.org`); phone/Spotify intentionally hidden (empty in `site.social` / `site.phone`).
 - **Home/News/Quem Somos imagery:** no Home/News photos were in `Site/` (only PSDs) and Quem Somos photos were baked into mockups — these areas use the events hero / gradients. Drop real photos into `public/images/{home,news}` (and add to Quem Somos) to enrich them; Instagram is a good source.
-- **News:** 3 placeholder posts (`content/site.ts` → `newsPosts`); wire to real posts / sermon / podcast / reading-plan links.
+- **News (file-based):** posts live in **`content/news.ts`** — there's a copy-paste template at the top of the file. To add one: save the image in `public/uploads/`, copy the template block to the top of the array (newest first), fill in `slug/date/image/link/title/excerpt`, save. Shows on `/news` and the 3 newest appear on Home. `image` and `link` are optional (no image → gradient card). The weekly Instagram graphics are ideal here. (Automated options — IG Graph API feed or a CMS — were discussed and deferred; revisit if manual updates get tiring.)
 - **Events:** source assets are from 2023 — confirm current calendar and registration links (`content/events.ts`).
 - **Values:** value #1 (Intimidade) is verbatim with refs; values #2–7 descriptions are faithful summaries — confirm wording and Bible refs (`content/values.ts`).
 - **Translations:** PT transcribed from assets; EN/ES drafted by translation — review before launch.

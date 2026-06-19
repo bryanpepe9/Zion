@@ -5,6 +5,7 @@ export interface Ministry {
   name: string; // brand name, not translated
   image: string;
   ages?: Localized;
+  meets?: Localized; // day/time/location, e.g. weekly hangout
   desc: Localized;
 }
 
@@ -25,11 +26,16 @@ export const ministries: Ministry[] = [
     slug: "rise",
     name: "Rise",
     image: "/images/ministerios/rise.png",
-    ages: { en: "Ages 12–14", pt: "12 a 14 anos", es: "12 a 14 años" },
+    ages: { en: "Ages 12–17", pt: "12 a 17 anos", es: "12 a 17 años" },
+    meets: {
+      en: "Fridays · Hangout 5 PM · Threefold Cafe, 3060 SW 37th Ave, Miami",
+      pt: "Sextas · Hangout 17h · Threefold Cafe, 3060 SW 37th Ave, Miami",
+      es: "Viernes · Hangout 5 PM · Threefold Cafe, 3060 SW 37th Ave, Miami",
+    },
     desc: {
-      pt: "Ministério da Zion Church focado em adolescentes de 12 a 14 anos. É nossa missão ver adolescentes sendo formados no olho do furacão do avivamento, com suas identidades forjadas no caráter de Cristo, cheios do Poder do Espírito Santo, levando hoje mesmo o Reino dos Céus para a sociedade a sua volta!",
-      en: "A Zion Church ministry for teenagers ages 12 to 14. Our mission is to see teenagers being shaped in the eye of the storm of revival, with their identities forged in the character of Christ, filled with the power of the Holy Spirit, bringing the Kingdom of Heaven to the world around them starting today!",
-      es: "Un ministerio de Zion Church para adolescentes de 12 a 14 años. Nuestra misión es ver a los adolescentes siendo formados en el ojo del huracán del avivamiento, con sus identidades forjadas en el carácter de Cristo, llenos del poder del Espíritu Santo, llevando el Reino de los Cielos al mundo que los rodea desde hoy mismo.",
+      pt: "Ministério da Zion Church focado em adolescentes de 12 a 17 anos. É nossa missão ver adolescentes sendo formados no olho do furacão do avivamento, com suas identidades forjadas no caráter de Cristo, cheios do Poder do Espírito Santo, levando hoje mesmo o Reino dos Céus para a sociedade a sua volta!",
+      en: "A Zion Church ministry for teenagers ages 12 to 17. Our mission is to see teenagers being shaped in the eye of the storm of revival, with their identities forged in the character of Christ, filled with the power of the Holy Spirit, bringing the Kingdom of Heaven to the world around them starting today!",
+      es: "Un ministerio de Zion Church para adolescentes de 12 a 17 años. Nuestra misión es ver a los adolescentes siendo formados en el ojo del huracán del avivamiento, con sus identidades forjadas en el carácter de Cristo, llenos del poder del Espíritu Santo, llevando el Reino de los Cielos al mundo que los rodea desde hoy mismo.",
     },
   },
   {
@@ -47,11 +53,16 @@ export const ministries: Ministry[] = [
     slug: "vox",
     name: "Vox",
     image: "/images/ministerios/vox.png",
-    ages: { en: "Ages 18–26", pt: "18 a 26 anos", es: "18 a 26 años" },
+    ages: { en: "Ages 19–29", pt: "19 a 29 anos", es: "19 a 29 años" },
+    meets: {
+      en: "Fridays · Hangout 7:30 PM · Azusa, 3823 Thomas Ave",
+      pt: "Sextas · Hangout 19h30 · Azusa, 3823 Thomas Ave",
+      es: "Viernes · Hangout 7:30 PM · Azusa, 3823 Thomas Ave",
+    },
     desc: {
-      pt: 'O Vox é um ministério de jovens adultos de 18 a 26 anos, que são compromissados a marcarem a sua geração. A palavra "vox" significa voz no latim. O intuito deste grupo é justamente ser uma voz que anuncia as boas novas do Reino e demonstra o poder e amor de Deus.',
-      en: 'Vox is a ministry for young adults ages 18 to 26 who are committed to marking their generation. The word "vox" means "voice" in Latin. The purpose of this group is exactly that: to be a voice that proclaims the good news of the Kingdom and demonstrates the power and love of God.',
-      es: 'Vox es un ministerio para jóvenes adultos de 18 a 26 años, comprometidos a marcar su generación. La palabra «vox» significa «voz» en latín. El propósito de este grupo es justamente ese: ser una voz que anuncia las buenas nuevas del Reino y demuestra el poder y el amor de Dios.',
+      pt: 'O Vox é um ministério de jovens adultos de 19 a 29 anos, que são compromissados a marcarem a sua geração. A palavra "vox" significa voz no latim. O intuito deste grupo é justamente ser uma voz que anuncia as boas novas do Reino e demonstra o poder e amor de Deus.',
+      en: 'Vox is a ministry for young adults ages 19 to 29 who are committed to marking their generation. The word "vox" means "voice" in Latin. The purpose of this group is exactly that: to be a voice that proclaims the good news of the Kingdom and demonstrates the power and love of God.',
+      es: 'Vox es un ministerio para jóvenes adultos de 19 a 29 años, comprometidos a marcar su generación. La palabra «vox» significa «voz» en latín. El propósito de este grupo es justamente ese: ser una voz que anuncia las buenas nuevas del Reino y demuestra el poder y el amor de Dios.',
     },
   },
   {
