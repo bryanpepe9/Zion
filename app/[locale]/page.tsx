@@ -53,17 +53,20 @@ export default async function HomePage({
 
       {/* Welcome / vision */}
       <section className="bg-zion-radial">
-        <div className="container-zion grid gap-10 py-24 lg:grid-cols-[0.85fr_1fr] lg:gap-16 lg:py-32">
+        <div className="container-zion grid gap-10 py-24 lg:grid-cols-[minmax(0,1.2fr)_minmax(20rem,0.8fr)] lg:items-center lg:gap-16 lg:py-32 xl:gap-20">
           <Reveal>
             <p className="mb-4 text-xs uppercase tracking-[0.3em] text-teal">
               {t(home.welcomeTitle, l)}
             </p>
-            <h2 className="max-w-2xl font-display text-3xl leading-snug text-cream sm:text-4xl lg:text-5xl">
+            <h2 className="max-w-4xl font-display text-3xl leading-snug text-cream sm:text-4xl">
               {t(site.vision, l)}
             </h2>
           </Reveal>
-          <Reveal delay={120} className="flex items-end">
-            <p className="max-w-2xl text-base leading-relaxed text-cream/75 md:text-lg">
+          <Reveal
+            delay={120}
+            className="flex items-center lg:border-l lg:border-line lg:py-6 lg:pl-10"
+          >
+            <p className="max-w-2xl text-base leading-relaxed text-cream/75 md:text-lg lg:text-xl lg:leading-[1.65] xl:text-[1.375rem]">
               {t(home.welcomeBody, l)}
             </p>
           </Reveal>

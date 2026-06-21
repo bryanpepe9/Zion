@@ -38,7 +38,9 @@ export default function RootLayout({
       lang="en"
       className={`${display.variable} ${body.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col">{children}</body>
+      <body id="top" className="flex min-h-full flex-col">
+        {children}
+      </body>
     </html>
   );
 }
