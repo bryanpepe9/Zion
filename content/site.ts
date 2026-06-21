@@ -62,19 +62,19 @@ export const home = {
     },
   ],
   livestreamTitle: {
-    en: "Also live on YouTube",
-    pt: "Também ao vivo no YouTube",
-    es: "También en vivo por YouTube",
+    en: "Live on YouTube",
+    pt: "Ao vivo no YouTube",
+    es: "En vivo por YouTube",
   } as L,
   livestreamBody: {
-    en: "Join the service online every Sunday at the same time.",
-    pt: "Acompanhe o culto online todos os domingos, no mesmo horário.",
-    es: "Acompaña el culto en línea todos los domingos, en el mismo horario.",
+    en: "The service is streamed at the same time.",
+    pt: "O culto é transmitido no mesmo horário.",
+    es: "El culto se transmite en el mismo horario.",
   } as L,
   livestreamCta: {
-    en: "Watch live",
-    pt: "Assistir ao vivo",
-    es: "Ver en vivo",
+    en: "Watch",
+    pt: "Assistir",
+    es: "Ver",
   } as L,
   scheduleCta: {
     en: "View full schedule",
