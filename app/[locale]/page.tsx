@@ -53,17 +53,20 @@ export default async function HomePage({
 
       {/* Welcome / vision */}
       <section className="bg-zion-radial">
-        <div className="container-zion grid gap-10 py-24 lg:grid-cols-[0.85fr_1fr] lg:gap-16 lg:py-32">
+        <div className="container-zion grid gap-10 py-24 lg:grid-cols-[minmax(0,1.2fr)_minmax(20rem,0.8fr)] lg:items-center lg:gap-16 lg:py-32 xl:gap-20">
           <Reveal>
             <p className="mb-4 text-xs uppercase tracking-[0.3em] text-teal">
               {t(home.welcomeTitle, l)}
             </p>
-            <h2 className="max-w-2xl font-display text-3xl leading-snug text-cream sm:text-4xl lg:text-5xl">
+            <h2 className="max-w-4xl font-display text-3xl leading-snug text-cream sm:text-4xl">
               {t(site.vision, l)}
             </h2>
           </Reveal>
-          <Reveal delay={120} className="flex items-end">
-            <p className="max-w-2xl text-base leading-relaxed text-cream/75 md:text-lg">
+          <Reveal
+            delay={120}
+            className="flex items-center lg:border-l lg:border-line lg:py-6 lg:pl-10"
+          >
+            <p className="max-w-2xl text-base leading-relaxed text-cream/75 md:text-lg lg:text-xl lg:leading-[1.65] xl:text-[1.375rem]">
               {t(home.welcomeBody, l)}
             </p>
           </Reveal>
@@ -78,21 +81,57 @@ export default async function HomePage({
               {t(home.servicesTitle, l)}
             </h3>
             <p className="mt-3 text-cream/60">{t(home.servicesNote, l)}</p>
-            <ul className="mt-8 divide-y divide-line">
+            <ul className="mt-8 border-y border-line">
               {home.services.map((s, idx) => (
-                <li
-                  key={idx}
-                  className="flex items-baseline justify-between py-5"
-                >
-                  <span className="font-display text-2xl text-cream md:text-3xl">
-                    {t(s.day, l)}
-                  </span>
-                  <span className="text-lg tracking-wide text-cream/70">
-                    {s.time}
-                  </span>
+                <li key={idx} className="py-5">
+                  <div className="flex items-baseline justify-between gap-6">
+                    <span className="font-display text-2xl text-cream md:text-3xl">
+                      {t(s.day, l)}
+                    </span>
+                    <span className="shrink-0 text-lg tracking-wide text-cream/70">
+                      {t(s.time, l)}
+                    </span>
+                  </div>
+
+                  <div className="mt-5 flex items-start justify-between gap-4 border-t border-line pt-4 sm:items-center">
+                    <div className="flex min-w-0 items-start gap-3">
+                      <span
+                        aria-hidden="true"
+                        className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-teal shadow-[0_0_12px_rgba(20,184,166,0.65)]"
+                      />
+                      <div>
+                        <p className="text-sm font-medium text-cream">
+                          {t(home.livestreamTitle, l)}
+                        </p>
+                        <p className="mt-0.5 text-sm leading-relaxed text-cream/50">
+                          {t(home.livestreamBody, l)}
+                        </p>
+                      </div>
+                    </div>
+                    <a
+                      href={site.social.youtube}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="shrink-0 text-sm tracking-wide text-teal transition-colors hover:text-emerald"
+                    >
+                      {t(home.livestreamCta, l)} ↗
+                    </a>
+                  </div>
                 </li>
               ))}
             </ul>
+            <Link
+              href={localizedHref("/programacao", l)}
+              className="group mt-6 inline-flex items-center gap-3 text-sm tracking-wide text-cream/70 transition-colors hover:text-cream"
+            >
+              {t(home.scheduleCta, l)}
+              <span
+                aria-hidden="true"
+                className="text-teal transition-transform duration-300 group-hover:translate-x-1"
+              >
+                →
+              </span>
+            </Link>
           </Reveal>
           <Reveal delay={120} className="flex flex-col justify-center gap-5">
             <h3 className="font-display text-sm uppercase tracking-[0.3em] text-teal">

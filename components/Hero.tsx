@@ -33,7 +33,7 @@ export default function Hero({
 }: HeroProps) {
   const minH =
     size === "full"
-      ? "min-h-[88vh] md:min-h-screen"
+      ? "min-h-[100svh] md:min-h-screen"
       : "min-h-[52vh] md:min-h-[60vh]";
   const alignment =
     align === "center" ? "items-center text-center" : "items-start text-left";

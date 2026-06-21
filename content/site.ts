@@ -56,8 +56,31 @@ export const home = {
     es: "Culto semanal los domingos",
   } as L,
   services: [
-    { day: { en: "Sunday", pt: "Domingo", es: "Domingo" } as L, time: "4:30 PM" },
+    {
+      day: { en: "Sunday", pt: "Domingo", es: "Domingo" } as L,
+      time: { en: "4:30 PM", pt: "16h30", es: "4:30 PM" } as L,
+    },
   ],
+  livestreamTitle: {
+    en: "Live on YouTube",
+    pt: "Ao vivo no YouTube",
+    es: "En vivo por YouTube",
+  } as L,
+  livestreamBody: {
+    en: "The service is streamed at the same time.",
+    pt: "O culto é transmitido no mesmo horário.",
+    es: "El culto se transmite en el mismo horario.",
+  } as L,
+  livestreamCta: {
+    en: "Watch",
+    pt: "Assistir",
+    es: "Ver",
+  } as L,
+  scheduleCta: {
+    en: "View full schedule",
+    pt: "Confira a programação completa",
+    es: "Ver la programación completa",
+  } as L,
   locationTitle: { en: "Where we are", pt: "Onde estamos", es: "Dónde estamos" } as L,
   directions: { en: "Get directions", pt: "Ver no mapa", es: "Ver en el mapa" } as L,
 
