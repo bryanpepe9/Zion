@@ -88,11 +88,40 @@ export default async function HomePage({
                     {t(s.day, l)}
                   </span>
                   <span className="text-lg tracking-wide text-cream/70">
-                    {s.time}
+                    {t(s.time, l)}
                   </span>
                 </li>
               ))}
             </ul>
+            <div className="mt-6 flex items-start gap-4 border-l border-teal/60 bg-ink/20 px-5 py-4">
+              <span
+                aria-hidden="true"
+                className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-teal/50 text-teal"
+              >
+                <span className="ml-0.5 h-0 w-0 border-y-[5px] border-l-[8px] border-y-transparent border-l-current" />
+              </span>
+              <div>
+                <p className="text-sm font-medium text-cream">
+                  {t(home.livestreamTitle, l)}
+                </p>
+                <p className="mt-1 text-sm leading-relaxed text-cream/60">
+                  {t(home.livestreamBody, l)}{" "}
+                  <a
+                    href={site.social.youtube}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-teal transition-colors hover:text-emerald"
+                  >
+                    {t(home.livestreamCta, l)} ↗
+                  </a>
+                </p>
+              </div>
+            </div>
+            <div className="mt-7">
+              <PillButton href={localizedHref("/programacao", l)}>
+                {t(home.scheduleCta, l)}
+              </PillButton>
+            </div>
           </Reveal>
           <Reveal delay={120} className="flex flex-col justify-center gap-5">
             <h3 className="font-display text-sm uppercase tracking-[0.3em] text-teal">

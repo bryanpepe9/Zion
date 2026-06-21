@@ -12,10 +12,10 @@ npm run lint     # eslint
 
 ## Structure
 
-- `app/[locale]/…` — seven pages: `/` (Home), `/quem-somos`, `/ministerios`, `/missoes`, `/eventos`, `/news`, `/ofertas` (Tithes & Offerings). `locale` = `en` | `pt` | `es` (default `en`); `app/page.tsx` redirects `/` → `/en`.
+- `app/[locale]/…` — eight pages: `/` (Home), `/quem-somos`, `/ministerios`, `/missoes`, `/eventos`, `/news`, `/ofertas` (Tithes & Offerings), `/programacao` (weekly schedule). `locale` = `en` | `pt` | `es` (default `en`); `app/page.tsx` redirects `/` → `/en`.
 - The header **Give** pill (desktop + mobile) links to `/ofertas` — that's the offerings entry point (not in the 6-item text nav, to keep the header uncluttered; mirrors São Paulo's giving page).
 - `lib/i18n.ts` — locales, nav, shared UI strings, `Localized` type (`Partial<Record<Locale,string>>`), and `t()` (falls back to English) + `localizedHref()` helpers.
-- `content/` — all copy as `{ en, pt, es }` data: `ministries.ts` (11), `missionaries.ts` (16), `values.ts` (7), `events.ts`, `site.ts` (page copy + Home/News + footer).
+- `content/` — all copy as `{ en, pt, es }` data: `ministries.ts` (11), `missionaries.ts` (16), `values.ts` (7), `events.ts`, `schedule.ts`, `site.ts` (page copy + Home/News + footer).
 - `components/` — `Header` (sticky + full-screen mobile menu), `Footer`, `LangToggle`, `Hero` (curve motif), `PillButton`, `MinistryCard`, `MissionaryCard`, `EventCard`, `NewsCard`, `ValuesCarousel`, `Reveal` (scroll-in), `SectionHeading`.
 - `app/globals.css` — Tailwind v4 `@theme` brand tokens (colors, fonts, easing) + helpers (`bg-zion-radial`, `bg-zion-panel`, `container-zion`, `.reveal`).
 - `scripts/process-assets.mjs` — one-off `sharp` script that cropped clean photos out of the source design PNGs into `public/images/`. Source assets live in `../Site`.
