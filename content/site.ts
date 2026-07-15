@@ -153,6 +153,63 @@ export const pages = {
       es: "Conferencias, encuentros y celebraciones para toda la comunidad Zion.",
     } as L,
   },
+  // --- Placeholder pages (content coming soon) ---  // TODO confirm content
+  areasExecutivas: {
+    title: { en: "Executive Areas", pt: "Áreas Executivas", es: "Áreas Ejecutivas" } as L,
+    intro: {
+      en: "The teams and departments that serve the day-to-day life of Zion Miami.",
+      pt: "As equipes e departamentos que servem o dia a dia da Zion Miami.",
+      es: "Los equipos y departamentos que sirven el día a día de Zion Miami.",
+    } as L,
+  },
+  links: {
+    title: { en: "Links", pt: "Links", es: "Links" } as L,
+    intro: {
+      en: "Quick links to everything happening at Zion Miami.",
+      pt: "Links rápidos para tudo o que acontece na Zion Miami.",
+      es: "Enlaces rápidos a todo lo que sucede en Zion Miami.",
+    } as L,
+  },
+  batismos: {
+    title: { en: "Baptisms", pt: "Batismos", es: "Bautismos" } as L,
+    intro: {
+      en: "Take your next step of faith and be baptized with us.",
+      pt: "Dê o próximo passo na sua fé e seja batizado conosco.",
+      es: "Da el próximo paso en tu fe y bautízate con nosotros.",
+    } as L,
+  },
+  zao: {
+    title: {
+      en: "ZAO Bible Institute",
+      pt: "Instituto Bíblico ZAO",
+      es: "Instituto Bíblico ZAO",
+    } as L,
+    intro: {
+      en: "Be equipped in the Word and the Spirit at our Bible institute.",
+      pt: "Seja capacitado na Palavra e no Espírito no nosso instituto bíblico.",
+      es: "Sé capacitado en la Palabra y el Espíritu en nuestro instituto bíblico.",
+    } as L,
+  },
+  planoLeitura: {
+    title: {
+      en: "Bible Reading Plan",
+      pt: "Plano de Leitura Bíblica",
+      es: "Plan de Lectura Bíblica",
+    } as L,
+    intro: {
+      pt: "Nós da Família Zion sabemos da importância da Palavra de Deus e em 2026 estamos juntos no propósito de ler a Bíblia durante o ano todo.",
+      en: "We at the Zion Family know the importance of the Word of God, and in 2026 we are united in the purpose of reading the Bible all year long.",
+      es: "En la Familia Zion conocemos la importancia de la Palabra de Dios, y en 2026 estamos juntos en el propósito de leer la Biblia durante todo el año.",
+    } as L,
+  },
+  contato: {
+    title: { en: "Contact Us", pt: "Contato", es: "Contacto" } as L,
+    intro: {
+      en: "We'd love to hear from you. Reach out and connect with Zion Miami.",
+      pt: "Adoraríamos ouvir você. Entre em contato e conecte-se com a Zion Miami.",
+      es: "Nos encantaría saber de ti. Ponte en contacto y conéctate con Zion Miami.",
+    } as L,
+  },
   news: {
     title: { en: "News", pt: "News", es: "News" } as L,
     intro: {

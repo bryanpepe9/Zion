@@ -4,13 +4,12 @@ import Image from "next/image";
 import Hero from "@/components/Hero";
 import Reveal from "@/components/Reveal";
 import PillButton from "@/components/PillButton";
-import NewsCard from "@/components/NewsCard";
 import WorldMap from "@/components/WorldMap";
 import { isLocale, nav, t, ui, localizedHref, type Locale } from "@/lib/i18n";
-import { home, site, newsPosts } from "@/content/site";
+import { home, site } from "@/content/site";
 import { networkSection } from "@/content/locations";
 
-const exploreKeys = ["/quem-somos", "/ministerios", "/missoes", "/eventos"];
+const exploreKeys = ["/quem-somos", "/ministerios", "/eventos", "/contato"];
 
 export default async function HomePage({
   params,
@@ -234,30 +233,6 @@ export default async function HomePage({
               />
             </div>
           </Reveal>
-        </div>
-      </section>
-
-      {/* Latest news */}
-      <section className="border-t border-line">
-        <div className="container-zion py-24 md:py-32">
-          <Reveal className="mb-12 flex items-end justify-between gap-6">
-            <h2 className="font-display text-4xl text-cream md:text-5xl">
-              {t(home.newsTitle, l)}
-            </h2>
-            <Link
-              href={localizedHref("/news", l)}
-              className="shrink-0 text-sm tracking-wide text-teal hover:text-emerald"
-            >
-              {t(home.newsAll, l)} →
-            </Link>
-          </Reveal>
-          <div className="grid gap-6 md:grid-cols-3">
-            {newsPosts.slice(0, 3).map((post, i) => (
-              <Reveal key={post.slug} delay={(i % 3) * 80}>
-                <NewsCard post={post} locale={l} />
-              </Reveal>
-            ))}
-          </div>
         </div>
       </section>
 

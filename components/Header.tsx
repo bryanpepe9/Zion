@@ -27,7 +27,8 @@ export default function Header({ locale }: { locale: Locale }) {
     };
   }, [open]);
 
-  function isActive(href: string) {
+  function isActive(href?: string) {
+    if (!href) return false;
     const full = localizedHref(href, locale);
     if (href === "/") return pathname === full;
     return pathname.startsWith(full);
@@ -60,19 +61,81 @@ export default function Header({ locale }: { locale: Locale }) {
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-8 lg:flex">
-          {nav.map((item) => (
-            <Link
-              key={item.href}
-              href={localizedHref(item.href, locale)}
-              className={`text-sm tracking-wide transition-colors ${
-                isActive(item.href)
-                  ? "text-cream"
-                  : "text-cream/65 hover:text-cream"
-              }`}
-            >
-              {t(item.label, locale)}
-            </Link>
-          ))}
+          {nav.map((item) => {
+            const itemActive = item.children
+              ? item.children.some((c) => isActive(c.href))
+              : isActive(item.href);
+            if (!item.children) {
+              return (
+                <Link
+                  key={item.href}
+                  href={localizedHref(item.href, locale)}
+                  className={`text-sm tracking-wide transition-colors ${
+                    itemActive ? "text-cream" : "text-cream/65 hover:text-cream"
+                  }`}
+                >
+                  {t(item.label, locale)}
+                </Link>
+              );
+            }
+            const triggerClass = `inline-flex cursor-pointer items-center gap-1 text-sm tracking-wide transition-colors ${
+              itemActive ? "text-cream" : "text-cream/65 hover:text-cream"
+            }`;
+            const chevron = (
+              <svg
+                viewBox="0 0 12 12"
+                fill="none"
+                className="h-3 w-3 transition-transform duration-200 group-hover:rotate-180"
+                aria-hidden="true"
+              >
+                <path
+                  d="M2.5 4.5 6 8l3.5-3.5"
+                  stroke="currentColor"
+                  strokeWidth="1.3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            );
+            return (
+              <div key={item.label.en} className="group relative">
+                {item.href ? (
+                  <Link href={localizedHref(item.href, locale)} className={triggerClass}>
+                    {t(item.label, locale)}
+                    {chevron}
+                  </Link>
+                ) : (
+                  <span
+                    className={triggerClass}
+                    tabIndex={0}
+                    role="button"
+                    aria-haspopup="true"
+                  >
+                    {t(item.label, locale)}
+                    {chevron}
+                  </span>
+                )}
+                {/* pt-3 forms a hover bridge to the panel */}
+                <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                  <div className="min-w-44 rounded-xl border border-line bg-ink/95 p-2 shadow-xl backdrop-blur-md">
+                    {item.children.map((child) => (
+                      <Link
+                        key={child.href}
+                        href={localizedHref(child.href, locale)}
+                        className={`block rounded-lg px-4 py-2.5 text-sm tracking-wide transition-colors ${
+                          isActive(child.href)
+                            ? "text-teal"
+                            : "text-cream/75 hover:bg-white/5 hover:text-cream"
+                        }`}
+                      >
+                        {t(child.label, locale)}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </nav>
 
         <div className="hidden items-center gap-5 lg:flex">
@@ -121,19 +184,41 @@ export default function Header({ locale }: { locale: Locale }) {
             : "pointer-events-none opacity-0"
         }`}
       >
-        <nav className="container-zion flex h-full flex-col justify-center gap-7">
+        <nav className="container-zion flex h-full flex-col justify-center gap-6">
           {nav.map((item, i) => (
-            <Link
-              key={item.href}
-              href={localizedHref(item.href, locale)}
-              onClick={() => setOpen(false)}
-              className={`font-display text-3xl tracking-wide transition-colors ${
-                isActive(item.href) ? "text-teal" : "text-cream"
-              }`}
-              style={{ transitionDelay: `${i * 30}ms` }}
-            >
-              {t(item.label, locale)}
-            </Link>
+            <div key={item.label.en} style={{ transitionDelay: `${i * 30}ms` }}>
+              {item.href ? (
+                <Link
+                  href={localizedHref(item.href, locale)}
+                  onClick={() => setOpen(false)}
+                  className={`font-display text-3xl tracking-wide transition-colors ${
+                    isActive(item.href) ? "text-teal" : "text-cream"
+                  }`}
+                >
+                  {t(item.label, locale)}
+                </Link>
+              ) : (
+                <span className="font-display text-3xl tracking-wide text-cream/60">
+                  {t(item.label, locale)}
+                </span>
+              )}
+              {item.children && (
+                <div className="mt-3 flex flex-col gap-3 border-l border-line pl-5">
+                  {item.children.map((child) => (
+                    <Link
+                      key={child.href}
+                      href={localizedHref(child.href, locale)}
+                      onClick={() => setOpen(false)}
+                      className={`text-lg tracking-wide transition-colors ${
+                        isActive(child.href) ? "text-teal" : "text-cream/70"
+                      }`}
+                    >
+                      {t(child.label, locale)}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
           ))}
           <div className="mt-6 flex items-center gap-6">
             <LangToggle locale={locale} />
