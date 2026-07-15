@@ -4,10 +4,8 @@ import Image from "next/image";
 import Hero from "@/components/Hero";
 import Reveal from "@/components/Reveal";
 import PillButton from "@/components/PillButton";
-import WorldMap from "@/components/WorldMap";
 import { isLocale, t, ui, localizedHref, type Locale } from "@/lib/i18n";
 import { home, site } from "@/content/site";
-import { networkSection } from "@/content/locations";
 
 export default async function HomePage({
   params,
@@ -136,26 +134,6 @@ export default async function HomePage({
             </PillButton>
           </Reveal>
         </div>
-      </section>
-
-      {/* Global network */}
-      <section className="overflow-hidden border-t border-line bg-zion-radial py-24 md:py-32">
-        <div className="container-zion">
-          <Reveal className="max-w-2xl">
-            <p className="mb-4 text-sm uppercase tracking-[0.35em] text-teal">
-              {t(networkSection.kicker, l)}
-            </p>
-            <h2 className="font-display text-4xl text-cream md:text-6xl">
-              {t(networkSection.title, l)}
-            </h2>
-            <p className="mt-5 text-base leading-relaxed text-cream/70 md:text-lg">
-              {t(networkSection.lede, l)}
-            </p>
-          </Reveal>
-        </div>
-        <Reveal delay={120} className="mt-12 md:mt-16">
-          <WorldMap locale={l} />
-        </Reveal>
       </section>
 
       {/* Bible reading plan */}
