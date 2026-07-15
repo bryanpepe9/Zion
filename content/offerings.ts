@@ -67,28 +67,8 @@ export const offerings = {
       } as Localized,
       cta: {
         label: { en: "Give online", pt: "Clique para ofertar", es: "Ofrendar en línea" } as Localized,
-        href: "#", // TODO: church online-giving link (Tithe.ly / Pushpay / etc.)
+        href: "https://pushpay.com/g/zionchurch",
       },
-    },
-    {
-      key: "zelle",
-      name: { en: "Zelle", pt: "Zelle", es: "Zelle" } as Localized,
-      desc: {
-        en: "Send your gift with no fees using Zelle.",
-        pt: "Envie sua oferta sem taxas usando o Zelle.",
-        es: "Envía tu ofrenda sin comisiones usando Zelle.",
-      } as Localized,
-      value: "giving@zionmiami.org", // TODO: real Zelle email/phone
-    },
-    {
-      key: "paypal",
-      name: { en: "PayPal", pt: "PayPal", es: "PayPal" } as Localized,
-      desc: {
-        en: "Give through PayPal using our email.",
-        pt: "Dê seus dízimos e ofertas através do PayPal usando o nosso email.",
-        es: "Ofrenda a través de PayPal usando nuestro correo.",
-      } as Localized,
-      value: "info@zionmiami.org", // TODO: real PayPal address
     },
     {
       key: "in-person",
@@ -100,11 +80,4 @@ export const offerings = {
       } as Localized,
     },
   ],
-
-  // Embedded YouTube video (provided by the church).
-  video: {
-    id: "51Tcy2rCCtE",
-    start: 33,
-    title: { en: "How to give", pt: "Como contribuir", es: "Cómo contribuir" } as Localized,
-  },
 };
