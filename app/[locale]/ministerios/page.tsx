@@ -30,7 +30,6 @@ export default async function MinisteriosPage({
     <>
       <Hero
         title={t(pages.ministerios.title, l)}
-        subtitle={t(pages.ministerios.intro, l)}
         size="page"
         align="center"
       />

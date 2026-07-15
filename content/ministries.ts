@@ -13,7 +13,8 @@ export interface Ministry {
 export const ministries: Ministry[] = [
   {
     slug: "g52",
-    name: "G5.2",
+    // Renamed G5.2 → Lumen. NOTE: image still shows the old "G5.2" logo — needs a new Lumen logo.  // TODO logo
+    name: "Lumen",
     image: "/images/ministerios/g52.png",
     ages: { en: "Kids", pt: "Crianças", es: "Niños" },
     desc: {
@@ -39,17 +40,6 @@ export const ministries: Ministry[] = [
     },
   },
   {
-    slug: "flow",
-    name: "Flow",
-    image: "/images/ministerios/flow.png",
-    ages: { en: "Ages 15–17", pt: "15 a 17 anos", es: "15 a 17 años" },
-    desc: {
-      pt: "Flow é o ministério da Zion Church focado em jovens adolescentes de 15 a 17 anos. Acreditamos em uma geração de filhos que se levanta como líderes para trazer transformação e revolução dentro das suas escolas.",
-      en: "Flow is Zion Church's ministry for teenagers ages 15 to 17. We believe in a generation of sons and daughters rising up as leaders to bring transformation and revolution within their schools.",
-      es: "Flow es el ministerio de Zion Church para adolescentes de 15 a 17 años. Creemos en una generación de hijos e hijas que se levanta como líderes para traer transformación y revolución dentro de sus escuelas.",
-    },
-  },
-  {
     slug: "vox",
     name: "Vox",
     image: "/images/ministerios/vox.png",
@@ -66,28 +56,6 @@ export const ministries: Ministry[] = [
     },
   },
   {
-    slug: "eklektos",
-    name: "Eklektos",
-    image: "/images/ministerios/eklektos.png",
-    ages: { en: "Ages 27–39", pt: "27 a 39 anos", es: "27 a 39 años" },
-    desc: {
-      pt: 'A palavra "Eklektos" significa escolhidos, no grego. O Eklektos é o ministério de jovens de 27 a 39 anos da Zion Church, que acredita que serão capacitados para trazer o Reino de Deus nas esferas da sociedade, através de famílias e indivíduos que manifestam a luz e o poder de Cristo.',
-      en: 'The word "Eklektos" means "chosen" in Greek. Eklektos is Zion Church\'s ministry for young adults ages 27 to 39, who believe they will be equipped to bring the Kingdom of God into every sphere of society, through families and individuals who reflect the light and power of Christ.',
-      es: 'La palabra «Eklektos» significa «elegidos» en griego. Eklektos es el ministerio de jóvenes adultos de 27 a 39 años de Zion Church, que creen que serán capacitados para llevar el Reino de Dios a cada esfera de la sociedad, a través de familias e individuos que reflejan la luz y el poder de Cristo.',
-    },
-  },
-  {
-    slug: "diamante",
-    name: "Diamante",
-    image: "/images/ministerios/diamante.png",
-    ages: { en: "Ages 60+", pt: "60+ anos", es: "60+ años" },
-    desc: {
-      pt: "O Ministério Diamante é um ministério da Zion Church, cujos participantes são de acima de 60 anos de idade.",
-      en: "Diamante is a ministry of Zion Church for members over 60 years old.",
-      es: "Diamante es un ministerio de Zion Church para miembros mayores de 60 años.",
-    },
-  },
-  {
     slug: "altomonte",
     name: "Altomonte",
     image: "/images/ministerios/altomonte.png",
@@ -100,7 +68,7 @@ export const ministries: Ministry[] = [
   },
   {
     slug: "raizes",
-    name: "Raízes",
+    name: "Rooted",
     image: "/images/ministerios/raizes.png",
     ages: { en: "Membership", pt: "Membresia", es: "Membresía" },
     desc: {
@@ -111,7 +79,7 @@ export const ministries: Ministry[] = [
   },
   {
     slug: "jornada",
-    name: "Jornada",
+    name: "Journey",
     image: "/images/ministerios/jornada.png",
     ages: { en: "New believers", pt: "Novos convertidos", es: "Nuevos creyentes" },
     desc: {
@@ -121,19 +89,8 @@ export const ministries: Ministry[] = [
     },
   },
   {
-    slug: "missoes",
-    name: "Missões",
-    image: "/images/ministerios/missoes.png",
-    ages: { en: "Missions", pt: "Missões", es: "Misiones" },
-    desc: {
-      pt: "A Zion Church coopera com o que o Senhor tem feito ao redor do mundo dando suporte financeiro e espiritual a organizações missionárias e iniciativas de justiça social. Estas parcerias são definidas anualmente com diferentes instituições.",
-      en: "Zion Church partners with what the Lord is doing around the world by providing financial and spiritual support to missionary organizations and social justice initiatives. These partnerships are established each year with different organizations.",
-      es: "Zion Church coopera con lo que el Señor está haciendo alrededor del mundo brindando apoyo financiero y espiritual a organizaciones misioneras e iniciativas de justicia social. Estas alianzas se establecen cada año con diferentes organizaciones.",
-    },
-  },
-  {
     slug: "por-um-legado",
-    name: "Por um Legado",
+    name: "For a legacy",
     image: "/images/ministerios/por-um-legado.png",
     ages: { en: "Generosity", pt: "Generosidade", es: "Generosidad" },
     desc: {
