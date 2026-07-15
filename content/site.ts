@@ -40,9 +40,14 @@ export const home = {
     es: "Una iglesia que vive lo sobrenatural de Dios en el corazón de Miami. Ven tal como eres.",
   } as L,
   ctaVisit: { en: "Plan your visit", pt: "Planeje sua visita", es: "Planifica tu visita" } as L,
-  ctaWatch: { en: "Watch online", pt: "Assista online", es: "Mira en línea" } as L,
+  ctaServiceTimes: {
+    en: "Service Times",
+    pt: "Horários dos cultos",
+    es: "Horarios de cultos",
+  } as L,
 
   welcomeTitle: { en: "Welcome to Zion", pt: "Seja bem-vindo à Zion", es: "Bienvenido a Zion" } as L,
+  visionSource: { en: "— Our Vision", pt: "— Nossa Visão", es: "— Nuestra Visión" } as L,
   welcomeBody: {
     pt: "Aqui na Zion vivemos o sobrenatural, acreditamos no poder da Palavra e buscamos viver uma vida de intimidade com Deus. Desejamos que a Zion seja um lugar onde você vai ser instigado a buscar mais.",
     en: "Here at Zion we live the supernatural, we believe in the power of the Word, and we pursue a life of intimacy with God. We long for Zion to be a place where you are stirred to seek more.",
@@ -62,9 +67,9 @@ export const home = {
     },
   ],
   livestreamTitle: {
-    en: "Live on YouTube",
-    pt: "Ao vivo no YouTube",
-    es: "En vivo por YouTube",
+    en: "Watch Streamed Services on YouTube",
+    pt: "Assista aos cultos transmitidos no YouTube",
+    es: "Mira los cultos transmitidos en YouTube",
   } as L,
   livestreamBody: {
     en: "The service is streamed at the same time.",
@@ -99,7 +104,7 @@ export const home = {
     pt: "Acesse o plano de leitura",
     es: "Accede al plan de lectura",
   } as L,
-  readingPlanHref: "#", // TODO confirm — link to the 2026 reading plan
+  readingPlanHref: "https://open.spotify.com/show/1T45yelqay2wurvVuDaf9w",
 
   exploreTitle: { en: "Explore Zion", pt: "Explore a Zion", es: "Explora Zion" } as L,
   newsTitle: { en: "Latest news", pt: "Últimas notícias", es: "Últimas noticias" } as L,
