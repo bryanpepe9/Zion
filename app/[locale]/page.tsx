@@ -4,13 +4,8 @@ import Image from "next/image";
 import Hero from "@/components/Hero";
 import Reveal from "@/components/Reveal";
 import PillButton from "@/components/PillButton";
-import NewsCard from "@/components/NewsCard";
-import WorldMap from "@/components/WorldMap";
-import { isLocale, nav, t, ui, localizedHref, type Locale } from "@/lib/i18n";
-import { home, site, newsPosts } from "@/content/site";
-import { networkSection } from "@/content/locations";
-
-const exploreKeys = ["/quem-somos", "/ministerios", "/missoes", "/eventos"];
+import { isLocale, t, ui, localizedHref, type Locale } from "@/lib/i18n";
+import { home, site } from "@/content/site";
 
 export default async function HomePage({
   params,
@@ -20,10 +15,6 @@ export default async function HomePage({
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const l = locale as Locale;
-
-  const explore = exploreKeys
-    .map((href) => nav.find((n) => n.href === href))
-    .filter(Boolean) as typeof nav;
 
   return (
     <>
@@ -43,31 +34,26 @@ export default async function HomePage({
         align="center"
         priority
       >
+        <PillButton href="#visit">
+          {t(home.ctaServiceTimes, l)}
+        </PillButton>
         <PillButton href="#visit" variant="solid">
           {t(home.ctaVisit, l)}
-        </PillButton>
-        <PillButton href={site.social.youtube} external>
-          {t(home.ctaWatch, l)}
         </PillButton>
       </Hero>
 
       {/* Welcome / vision */}
       <section className="bg-zion-radial">
-        <div className="container-zion grid gap-10 py-24 lg:grid-cols-[minmax(0,1.2fr)_minmax(20rem,0.8fr)] lg:items-center lg:gap-16 lg:py-32 xl:gap-20">
-          <Reveal>
-            <p className="mb-4 text-xs uppercase tracking-[0.3em] text-teal">
+        <div className="container-zion py-24 md:py-32">
+          <Reveal className="max-w-4xl">
+            <p className="mb-6 text-xs uppercase tracking-[0.3em] text-teal">
               {t(home.welcomeTitle, l)}
             </p>
-            <h2 className="max-w-4xl font-display text-3xl leading-snug text-cream sm:text-4xl">
+            <blockquote className="font-display text-3xl leading-snug text-cream sm:text-4xl lg:text-5xl lg:leading-[1.2]">
               {t(site.vision, l)}
-            </h2>
-          </Reveal>
-          <Reveal
-            delay={120}
-            className="flex items-center lg:border-l lg:border-line lg:py-6 lg:pl-10"
-          >
-            <p className="max-w-2xl text-base leading-relaxed text-cream/75 md:text-lg lg:text-xl lg:leading-[1.65] xl:text-[1.375rem]">
-              {t(home.welcomeBody, l)}
+            </blockquote>
+            <p className="mt-8 text-sm uppercase tracking-[0.2em] text-cream/45">
+              {t(home.visionSource, l)}
             </p>
           </Reveal>
         </div>
@@ -102,9 +88,6 @@ export default async function HomePage({
                       <div>
                         <p className="text-sm font-medium text-cream">
                           {t(home.livestreamTitle, l)}
-                        </p>
-                        <p className="mt-0.5 text-sm leading-relaxed text-cream/50">
-                          {t(home.livestreamBody, l)}
                         </p>
                       </div>
                     </div>
@@ -153,60 +136,6 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* Explore */}
-      <section className="bg-zion-radial">
-        <div className="container-zion py-24 md:py-32">
-          <Reveal className="mb-12">
-            <h2 className="font-display text-4xl text-cream md:text-5xl">
-              {t(home.exploreTitle, l)}
-            </h2>
-          </Reveal>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {explore.map((item, i) => (
-              <Reveal key={item.href} delay={(i % 4) * 80}>
-                <Link
-                  href={localizedHref(item.href, l)}
-                  className="group relative flex aspect-[4/5] flex-col justify-between overflow-hidden rounded-2xl bg-zion-panel p-7 ring-1 ring-line transition-all duration-500 ease-[var(--ease-soft)] hover:-translate-y-1 hover:ring-teal/50"
-                >
-                  <span className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-[radial-gradient(circle_at_50%_50%,rgba(20,184,166,0.4),transparent_65%)] transition-transform duration-700 group-hover:scale-125" />
-                  <span className="relative font-display text-5xl text-cream/15">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="relative">
-                    <span className="font-display text-2xl text-cream">
-                      {t(item.label, l)}
-                    </span>
-                    <span className="mt-2 block text-teal transition-transform duration-300 group-hover:translate-x-1">
-                      →
-                    </span>
-                  </span>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Global network */}
-      <section className="overflow-hidden border-t border-line bg-zion-radial py-24 md:py-32">
-        <div className="container-zion">
-          <Reveal className="max-w-2xl">
-            <p className="mb-4 text-sm uppercase tracking-[0.35em] text-teal">
-              {t(networkSection.kicker, l)}
-            </p>
-            <h2 className="font-display text-4xl text-cream md:text-6xl">
-              {t(networkSection.title, l)}
-            </h2>
-            <p className="mt-5 text-base leading-relaxed text-cream/70 md:text-lg">
-              {t(networkSection.lede, l)}
-            </p>
-          </Reveal>
-        </div>
-        <Reveal delay={120} className="mt-12 md:mt-16">
-          <WorldMap locale={l} />
-        </Reveal>
-      </section>
-
       {/* Bible reading plan */}
       <section className="relative overflow-hidden border-t border-line bg-zion-radial">
         <div className="container-zion grid items-center gap-12 py-24 md:grid-cols-2 md:gap-16 md:py-32">
@@ -218,7 +147,7 @@ export default async function HomePage({
               {t(home.readingPlanBody, l)}
             </p>
             <div className="mt-10">
-              <PillButton href={home.readingPlanHref}>
+              <PillButton href={home.readingPlanHref} external>
                 {t(home.readingPlanCta, l)}
               </PillButton>
             </div>
@@ -234,30 +163,6 @@ export default async function HomePage({
               />
             </div>
           </Reveal>
-        </div>
-      </section>
-
-      {/* Latest news */}
-      <section className="border-t border-line">
-        <div className="container-zion py-24 md:py-32">
-          <Reveal className="mb-12 flex items-end justify-between gap-6">
-            <h2 className="font-display text-4xl text-cream md:text-5xl">
-              {t(home.newsTitle, l)}
-            </h2>
-            <Link
-              href={localizedHref("/news", l)}
-              className="shrink-0 text-sm tracking-wide text-teal hover:text-emerald"
-            >
-              {t(home.newsAll, l)} →
-            </Link>
-          </Reveal>
-          <div className="grid gap-6 md:grid-cols-3">
-            {newsPosts.slice(0, 3).map((post, i) => (
-              <Reveal key={post.slug} delay={(i % 3) * 80}>
-                <NewsCard post={post} locale={l} />
-              </Reveal>
-            ))}
-          </div>
         </div>
       </section>
 

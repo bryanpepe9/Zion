@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import Hero from "@/components/Hero";
 import Reveal from "@/components/Reveal";
 import PillButton from "@/components/PillButton";
-import YouTubeEmbed from "@/components/YouTubeEmbed";
 import { isLocale, t, type Locale } from "@/lib/i18n";
 import { pages } from "@/content/site";
 import { offerings } from "@/content/offerings";
@@ -87,9 +86,9 @@ export default async function OfertasPage({
             <p className="mt-4 text-cream/65">{t(offerings.waysIntro, l)}</p>
           </Reveal>
 
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-5 sm:grid-cols-2">
             {offerings.methods.map((m, i) => (
-              <Reveal key={m.key} delay={(i % 4) * 80}>
+              <Reveal key={m.key} delay={(i % 2) * 80}>
                 <div className="flex h-full flex-col gap-4 rounded-2xl bg-zion-panel p-7 ring-1 ring-line">
                   <h3 className="font-display text-2xl text-cream">
                     {t(m.name, l)}
@@ -97,11 +96,6 @@ export default async function OfertasPage({
                   <p className="text-sm leading-relaxed text-cream/65">
                     {t(m.desc, l)}
                   </p>
-                  {"value" in m && m.value && (
-                    <p className="break-words font-display text-sm tracking-wide text-teal">
-                      {m.value}
-                    </p>
-                  )}
                   {"cta" in m && m.cta && (
                     <div className="mt-auto pt-2">
                       <PillButton href={m.cta.href} external className="w-fit">
@@ -113,19 +107,6 @@ export default async function OfertasPage({
               </Reveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* How-to video */}
-      <section className="border-t border-line bg-zion-panel">
-        <div className="container-zion py-24 md:py-32">
-          <Reveal className="mx-auto max-w-4xl">
-            <YouTubeEmbed
-              id={offerings.video.id}
-              start={offerings.video.start}
-              title={t(offerings.video.title, l)}
-            />
-          </Reveal>
         </div>
       </section>
     </>
